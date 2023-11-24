@@ -6,16 +6,16 @@ import es.ull.passengers.Passenger;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FlightPassengerTest {
+class FlightPassengerTest {
 
     @Test
-    public void testFlightNumberValidation() {
+    void testFlightNumberValidation() {
         assertThrows(RuntimeException.class, () -> new Flight("123", 100));
         assertDoesNotThrow(() -> new Flight("AA1234", 100));
     }
 
     @Test
-    public void testAddPassenger() {
+    void testAddPassenger() {
         Flight flight = new Flight("AA1234", 1);
         Passenger passenger1 = new Passenger("ID1", "John Doe", "US");
         Passenger passenger2 = new Passenger("ID2", "Jane Doe", "US");
