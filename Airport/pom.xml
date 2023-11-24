@@ -19,6 +19,7 @@
     </properties>
 
     <build>
+         <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
