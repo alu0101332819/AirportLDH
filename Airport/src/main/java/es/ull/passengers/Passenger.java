@@ -70,10 +70,8 @@ public class Passenger {
             }
         }
         setFlight(flight);
-        if (null != flight) {
-            if (!flight.addPassenger(this)) {
+        if (null != flight && !flight.addPassenger(this)) {
                 throw new RuntimeException("Cannot add passenger");
-            }
         }
     }
 
