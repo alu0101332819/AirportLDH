@@ -1,25 +1,51 @@
 package es.ull.passengers;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
 import es.ull.flights.Flight;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+public class PassengersTest {
 
-class PassengerTest {
+	@DisplayName("Tests para pasajeros")
+	@Nested
+	class PassengersCommonTests {
 
-    @Test
-    void testCountryCodeValidation() {
-        assertThrows(RuntimeException.class, () -> new Passenger("ID1", "John Doe", "XX"));
-        assertDoesNotThrow(() -> new Passenger("ID1", "John Doe", "US"));
-    }
+	    private Flight vueloFuerteventura;
+	    private Flight vueloLanzarote;
+	    private Passenger laura;
+	    private Passenger eduardo;
+	    private Passenger paula;
 
-    @Test
-    void testJoinFlight() {
-        Flight flight = new Flight("AA1234", 1);
-        Passenger passenger1 = new Passenger("ID1", "John Doe", "US");
-        Passenger passenger2 = new Passenger("ID2", "Jane Doe", "US");
+	    @BeforeEach
+	    void setUp() {
+	    	vueloFuerteventura = new Flight("FV001", 100);
+	    	vueloLanzarote = new Flight("LZ001", 82);
+	    	laura = new Passenger("id-PS01-1","Laura", "ES");
+	    	eduardo = new Passenger("id-PS02-1","Eduardo", "GE");
+	    	paula = new Passenger("id-PS02-2","Paula", "US");
+	    }
 
-        assertDoesNotThrow(() -> passenger1.joinFlight(flight));
-        assertThrows(RuntimeException.class, () -> passenger2.joinFlight(flight));
-    }
+	        @Test
+	        @DisplayName("Comprobación de atributos")
+	        void testParametersPassenger() {
+
+	        	laura.setFlight(vueloLanzarote);
+
+	            assertAll("Verifica todas las condiciones un intercambio a través de joinFlight",
+	                    () -> assertEquals("Miguel", laura.getName()),
+	                    () -> assertEquals("GE", eduardo.getCountryCode()),
+	                    () -> assertEquals(null, paula.getFlight()),
+	                    () -> {
+	                    	paula.setFlight(vueloFuerteventura);
+	                    	assertEquals("FV001", paula.getFlight().getFlightNumber());
+	                    },
+	            );
+	        }
+	}
 }
