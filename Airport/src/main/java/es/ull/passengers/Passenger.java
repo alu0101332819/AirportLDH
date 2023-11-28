@@ -23,6 +23,7 @@ package es.ull.passengers;
 import java.util.Arrays;
 import java.util.Locale;
 
+
 import es.ull.flights.Flight;
 
 public class Passenger {
@@ -40,10 +41,6 @@ public class Passenger {
         this.identifier = identifier;
         this.name = name;
         this.countryCode = countryCode;
-    }
-
-    public Passenger() {
-
     }
 
     public String getIdentifier() {
@@ -64,12 +61,16 @@ public class Passenger {
 
     public void joinFlight(Flight flight) {
         Flight previousFlight = this.flight;
-        if (null != previousFlight && !previousFlight.removePassenger(this)) {
+        if (null != previousFlight) {
+            if (!previousFlight.removePassenger(this)) {
                 throw new RuntimeException("Cannot remove passenger");
+            }
         }
         setFlight(flight);
-        if (null != flight && !flight.addPassenger(this)) {
+        if (null != flight) {
+            if (!flight.addPassenger(this)) {
                 throw new RuntimeException("Cannot add passenger");
+            }
         }
     }
 
