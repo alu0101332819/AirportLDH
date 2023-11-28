@@ -1,0 +1,7 @@
+¬
+es.ull.flights.Flight<
+<init>2es.ull.flights.Flight#<init>(Ljava/lang/String;I)VR
+addPassengerBes.ull.flights.Flight#addPassenger(Les/ull/passengers/Passenger;)ZL
+getFlightNumber9es.ull.flights.Flight#getFlightNumber()Ljava/lang/String;G
+getNumberOfPassengers.es.ull.flights.Flight#getNumberOfPassengers()IX
+removePassengerEes.ull.flights.Flight#removePassenger(Les/ull/passengers/Passenger;)Zjava.lang.Object
