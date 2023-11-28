@@ -61,14 +61,12 @@ public class Passenger {
 
     public void joinFlight(Flight flight) {
         Flight previousFlight = this.flight;
-        if (null != previousFlight) {
-            if (!previousFlight.removePassenger(this)) {
+        if (null != previousFlight && !previousFlight.removePassenger(this)) {
                 throw new RuntimeException("Cannot remove passenger");
             }
         }
         setFlight(flight);
-        if (null != flight) {
-            if (!flight.addPassenger(this)) {
+        if (null != flight && !flight.addPassenger(this)) {
                 throw new RuntimeException("Cannot add passenger");
             }
         }
