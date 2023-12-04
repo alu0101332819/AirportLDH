@@ -114,9 +114,6 @@ public class PassengerTest {
             assertNotNull(passenger.getFlight());
             assertEquals(1, flight.getNumberOfPassengers());
 
-            // Simulate a failure to remove the passenger from the previous flight
-            flight.setCanRemovePassenger(false);
-
             assertThrows(RuntimeException.class, () -> passenger.joinFlight(anotherFlight));
 
             // Ensure that the passenger is still in the initial flight
