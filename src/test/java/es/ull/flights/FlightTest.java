@@ -41,7 +41,7 @@ public class FlightTest {
         @DisplayName("Tests Errores de Creación y Máximo Número de Pasajeros")
         void testErrorCreationAndSeatsAvailable() {
 
-        	vueloFuerteventura1Plaza.addPassenger(miguel);
+        	vueloFuerteventura1Plaza.addPassenger(laura);
 
         	RuntimeException exceptionFlightBadFormatted = assertThrows(RuntimeException.class,
                     () -> vueloMalFormado = new Flight("FV01", 100));
