@@ -122,6 +122,10 @@ public class PassengerTest {
         
             // Ensure that the passenger is still in the initial flight
             assertNotNull(passenger.getFlight());
+            
+            // Print the flight number for debugging
+            System.out.println("Current Flight Number: " + passenger.getFlight().getFlightNumber());
+            
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
         }
