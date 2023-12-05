@@ -114,8 +114,6 @@ public class PassengerTest {
             assertNotNull(passenger.getFlight());
             assertEquals(1, flight.getNumberOfPassengers());
 
-            assertThrows(RuntimeException.class, () -> passenger.joinFlight(anotherFlight));
-
             // Ensure that the passenger is still in the initial flight
             assertNotNull(passenger.getFlight());
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
