@@ -130,7 +130,7 @@ public class PassengerTest {
             assertEquals(1, flight.getNumberOfPassengers());
 
             // Attempting to remove from the previous flight should not throw an exception
-            assertTrue(passenger.getFlight().removePassenger(passenger));
+            assertFalse(anotherFlight.removePassenger(passenger));
 
             // Ensure that the passenger is still in the initial flight
             assertNotNull(passenger.getFlight());
