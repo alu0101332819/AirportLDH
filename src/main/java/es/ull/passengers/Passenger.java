@@ -59,23 +59,24 @@ public class Passenger {
         return flight;
     }
 
-    public boolean joinFlight(Flight flight) {
+    public boolean joinFlight(Flight newFlight) {
         Flight previousFlight = this.flight;
-        
-        // Check if the passenger is already in the requested flight
-        if (flight == previousFlight) {
-            return; // Do nothing, already in the requested flight
+    
+        if (newFlight == previousFlight) {
+            return false; // Already in the requested flight
         }
     
         if (previousFlight != null && !previousFlight.removePassenger(this)) {
             throw new RuntimeException("Cannot remove passenger");
         }
     
-        setFlight(flight);
+        setFlight(newFlight);
     
-        if (flight != null && !flight.addPassenger(this)) {
+        if (newFlight != null && !newFlight.addPassenger(this)) {
             throw new RuntimeException("Cannot add passenger");
         }
+    
+        return true; // Successfully joined the new flight
     }
 
     public void setFlight(Flight flight) {
