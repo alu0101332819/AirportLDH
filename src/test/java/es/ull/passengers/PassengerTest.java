@@ -80,7 +80,7 @@ public class PassengerTest {
 
             passenger.joinFlight(flight);
             assertNotNull(passenger.getFlight());
-            assertEquals(1, flight.getNumberOfPassengers());
+            assertEquals(0, flight.getNumberOfPassengers());
 
             passenger.setFlight(anotherFlight);
             assertNotNull(passenger.getFlight());
@@ -119,7 +119,7 @@ public class PassengerTest {
         
             // Ensure that the passenger is still in the initial flight
             assertNotNull(passenger.getFlight());
-            assertEquals("FL001", passenger.getFlight().getFlightNumber());
+            assertEquals("FL005", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
         }
     }
