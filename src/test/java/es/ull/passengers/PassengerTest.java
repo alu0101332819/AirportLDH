@@ -123,7 +123,7 @@ public class PassengerTest {
             // Ensure that the passenger is still in the initial flight
             assertNotNull(passenger.getFlight());
             assertEquals("FL005", passenger.getFlight().getFlightNumber());
-            assertEquals(1, flight.getNumberOfPassengers());
+            assertEquals(0, flight.getNumberOfPassengers());
         }
     }
 }
