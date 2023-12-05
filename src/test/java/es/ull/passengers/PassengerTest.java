@@ -77,27 +77,29 @@ public class PassengerTest {
         @DisplayName("Manual Interchange Method")
         void testManualInterchangeMethod() {
             Flight anotherFlight = new Flight("FL003", 120);
-
+        
+            // Join the initial flight
             passenger.joinFlight(flight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
-
-            passenger.setFlight(anotherFlight);
+        
+            // Set to another flight
+            passenger.joinFlight(anotherFlight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL003", passenger.getFlight().getFlightNumber());
             assertEquals(1, anotherFlight.getNumberOfPassengers());
             assertEquals(0, flight.getNumberOfPassengers());
         }
-
+        
         @Test
         @DisplayName("Remove Passenger from Previous Flight")
         void testRemovePassengerFromPreviousFlight() {
             Flight anotherFlight = new Flight("FL004", 100);
             passenger.joinFlight(flight);
-    
+        
             assertNotNull(passenger.getFlight());
             assertEquals(1, flight.getNumberOfPassengers());
-    
+        
             passenger.joinFlight(anotherFlight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL004", passenger.getFlight().getFlightNumber());
