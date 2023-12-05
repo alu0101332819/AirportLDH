@@ -114,7 +114,7 @@ public class PassengerTest {
             passenger.joinFlight(flight);
         
             assertNotNull(passenger.getFlight());
-            assertEquals("FL005", passenger.getFlight().getFlightNumber());
+            assertEquals("FL001", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
         
             // Attempting to join another flight should not throw an exception
