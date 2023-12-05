@@ -59,7 +59,7 @@ public class Passenger {
         return flight;
     }
 
-    public void joinFlight(Flight flight) {
+    public boolean joinFlight(Flight flight) {
         Flight previousFlight = this.flight;
         
         // Check if the passenger is already in the requested flight
