@@ -68,6 +68,18 @@ public class PassengerTest {
         }
 
         @Test
+        @DisplayName("Joining the Same Flight Should Do Nothing")
+        void testJoiningSameFlight() {
+            passenger.joinFlight(flight);
+            Flight previousFlight = passenger.getFlight();
+
+            passenger.joinFlight(flight);
+
+            assertEquals(flight, passenger.getFlight());
+            assertEquals(previousFlight, passenger.getFlight());
+        }
+
+        @Test
         @DisplayName("Invalid Country Code")
         void testInvalidCountryCode() {
             assertThrows(RuntimeException.class, () -> new Passenger("id-456", "Jane Doe", "XX"));
