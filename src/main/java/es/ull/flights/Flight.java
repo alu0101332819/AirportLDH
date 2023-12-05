@@ -57,6 +57,11 @@ public class Flight {
         if (getNumberOfPassengers() >= seats) {
             throw new RuntimeException("Not enough seats for flight " + getFlightNumber());
         }
+    
+        if (passengers.contains(passenger)) {
+            return false; // El pasajero ya está presente en el vuelo
+        }
+    
         passenger.setFlight(this);
         return passengers.add(passenger);
     }
