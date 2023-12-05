@@ -67,6 +67,10 @@ public class Flight {
     }
 
     public boolean removePassenger(Passenger passenger) {
+        if (!passengers.contains(passenger)) {
+            return false; // El pasajero no está presente en el vuelo
+        }
+    
         passenger.setFlight(null);
         return passengers.remove(passenger);
     }
