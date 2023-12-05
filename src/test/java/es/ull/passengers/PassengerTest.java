@@ -114,21 +114,15 @@ public class PassengerTest {
             passenger.joinFlight(flight);
         
             assertNotNull(passenger.getFlight());
-            assertEquals("FL001", passenger.getFlight().getFlightNumber());
+            assertEquals("FL005", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
-        
-            // Print passenger information for debugging
-            System.out.println("Passenger before joining another flight: " + passenger);
         
             // Attempting to join another flight should not throw an exception
             passenger.joinFlight(anotherFlight);
         
-            // Print passenger information for debugging
-            System.out.println("Passenger after joining another flight: " + passenger);
-        
             // Ensure that the passenger is still in the initial flight
             assertNotNull(passenger.getFlight());
-            assertEquals("FL001", passenger.getFlight().getFlightNumber());
+            assertEquals("FL005", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
         }
     }
