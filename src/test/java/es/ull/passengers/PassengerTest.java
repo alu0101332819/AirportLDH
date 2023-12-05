@@ -39,13 +39,13 @@ public class PassengerTest {
         void testJoinAndLeaveFlight() {
             assertNull(passenger.getFlight());
 
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
 
             assertNotNull(passenger.getFlight());
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
 
-            assertTrue(passenger.joinFlight(null));
+            passenger.joinFlight(null);
 
             assertNull(passenger.getFlight());
             assertEquals(0, flight.getNumberOfPassengers());
@@ -56,11 +56,11 @@ public class PassengerTest {
         void testJoinAnotherFlight() {
             Flight anotherFlight = new Flight("FL002", 200);
 
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
             assertNotNull(passenger.getFlight());
             assertEquals(1, flight.getNumberOfPassengers());
 
-            assertTrue(passenger.joinFlight(anotherFlight));
+            passenger.joinFlight(anotherFlight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL002", passenger.getFlight().getFlightNumber());
             assertEquals(1, anotherFlight.getNumberOfPassengers());
@@ -70,10 +70,10 @@ public class PassengerTest {
         @Test
         @DisplayName("Joining the Same Flight Should Do Nothing")
         void testJoiningSameFlight() {
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
             Flight previousFlight = passenger.getFlight();
 
-            assertFalse(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
 
             assertEquals(flight, passenger.getFlight());
             assertEquals(previousFlight, passenger.getFlight());
@@ -91,12 +91,12 @@ public class PassengerTest {
             Flight anotherFlight = new Flight("FL003", 120);
 
             // Join the initial flight
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
 
             // Set to another flight
-            assertTrue(passenger.joinFlight(anotherFlight));
+            passenger.joinFlight(anotherFlight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL003", passenger.getFlight().getFlightNumber());
             assertEquals(1, anotherFlight.getNumberOfPassengers());
@@ -107,12 +107,12 @@ public class PassengerTest {
         @DisplayName("Remove Passenger from Previous Flight")
         void testRemovePassengerFromPreviousFlight() {
             Flight anotherFlight = new Flight("FL004", 100);
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
 
             assertNotNull(passenger.getFlight());
             assertEquals(1, flight.getNumberOfPassengers());
 
-            assertTrue(passenger.joinFlight(anotherFlight));
+            passenger.joinFlight(anotherFlight);
             assertNotNull(passenger.getFlight());
             assertEquals("FL004", passenger.getFlight().getFlightNumber());
             assertEquals(1, anotherFlight.getNumberOfPassengers());
@@ -123,24 +123,25 @@ public class PassengerTest {
         @DisplayName("Attempt to Remove Passenger from Previous Flight Fails")
         void testRemovePassengerFromPreviousFlightFails() {
             Flight anotherFlight = new Flight("FL005", 80);
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
         
             assertNotNull(passenger.getFlight());
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
             assertEquals(1, flight.getNumberOfPassengers());
         
-            // Attempting to remove from the previous flight should return true
-            assertTrue(flight.removePassenger(passenger));
+            // Attempting to remove from the previous flight should return false
+            assertFalse(anotherFlight.removePassenger(passenger));
         
-            // Ensure that the passenger is no longer in the initial flight
-            assertNull(passenger.getFlight());
-            assertEquals(0, flight.getNumberOfPassengers());
+            // Ensure that the passenger is still in the initial flight
+            assertNotNull(passenger.getFlight());
+            assertEquals("FL001", passenger.getFlight().getFlightNumber());
+            assertEquals(1, flight.getNumberOfPassengers());
         }
 
         @Test
         @DisplayName("Add Passenger to Current Flight Fails")
         void testAddPassengerToCurrentFlightFails() {
-            assertTrue(passenger.joinFlight(flight));
+            passenger.joinFlight(flight);
 
             assertNotNull(passenger.getFlight());
             assertEquals("FL001", passenger.getFlight().getFlightNumber());
@@ -148,7 +149,7 @@ public class PassengerTest {
 
             // Try to add to the current flight again
             assertFalse(flight.addPassenger(passenger));
-
+        
             // Ensure that the passenger count remains the same
             assertEquals(1, flight.getNumberOfPassengers());
         }
