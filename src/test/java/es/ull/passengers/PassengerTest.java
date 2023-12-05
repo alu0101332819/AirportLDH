@@ -136,6 +136,29 @@ public class PassengerTest {
             assertNotNull(passenger.getFlight());
             assertEquals("FL005", passenger.getFlight().getFlightNumber());
             assertEquals(0, flight.getNumberOfPassengers());
+
+            // Try to remove from the previous flight
+            assertDoesNotThrow(() -> previousFlight.removePassenger(passenger));
+        }
+
+        @Test
+        @DisplayName("Add Passenger to Current Flight Fails")
+        void testAddPassengerToCurrentFlightFails() {
+            passenger.joinFlight(flight);
+
+            assertNotNull(passenger.getFlight());
+            assertEquals("FL001", passenger.getFlight().getFlightNumber());
+            assertEquals(1, flight.getNumberOfPassengers());
+
+            // Try to add to the current flight again
+            assertThrows(RuntimeException.class, () -> flight.addPassenger(passenger));
+        }
+
+        @Test
+        @DisplayName("toString() Test")
+        void testToString() {
+            String expectedString = "Passenger John Doe with identifier: id-123 from US";
+            assertEquals(expectedString, passenger.toString());
         }
     }
 }
