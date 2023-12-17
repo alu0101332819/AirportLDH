@@ -10,8 +10,12 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alu0101332819_AirportLDH&metric=coverage)](https://sonarcloud.io/summary/new_code?id=alu0101332819_AirportLDH)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=alu0101332819_AirportLDH&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=alu0101332819_AirportLDH)
 
-Directorio que almacena el contenido de la Prática 5 de la asignatura "Laboratorio de Desarrollo y Herramientas".
+Directorio que almacena el contenido de las Práticas 5 y 6 de la asignatura "Laboratorio de Desarrollo y Herramientas".
 
 Cuyos objetivos son los siguientes:
 
-Desarrolle las pruebas unitarias para el proyecto software "Airport.zip". Incluya las pruebas empleando JUnit, para las clases flights y passengers. Evalúe la cobertura que tienen las pruebas unitarias del código con la ayuda de SonarCloud. Incluya los plugins presentados en clases en fichero POM de maven. El proyecto software debe entregarse o estar disponible en un sistema de control de versiones como GitHub.
+1. Desplegar el proyecto con la ayuda de la herramienta SonarCloud, asegurando que las actualizaciones sucesivas del código estén disponibles a través de un sistema de control de versiones y debidamente documentadas.
+2. Realizar o mejorar las pruebas unitarias (JUnit x.x) para validar la calidad del código desarrollado, incluyendo su documentación.
+3. Documentar el código fuente con las etiquetas específicas de la herramienta de documentación Doxygen.
+4. Actualizar el fichero POM con los plugins presentados en actividades anteriores.
+5. Integrar el código con la herramienta de integración continua Jenkins.
